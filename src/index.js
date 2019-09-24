@@ -11,21 +11,22 @@ class App extends React.Component {
       lat: null,
       errorMessage: ""
     }
+  }
 
-// moved out of render b/c too costly to do multiple times
-    window.navigator.geolocation.getCurrentPosition(
-// getCurrentPosition takes two callbacks: success and failure
-      position => {
-        this.setState({
-          lat: position.coords.latitude
-        })
-      },
-      err => {
-        this.setState({
-          errorMessage: err.message
-        })
-      }
-    );
+  componentDidMount() {
+      window.navigator.geolocation.getCurrentPosition(
+  // getCurrentPosition takes two callbacks: success and failure
+        position => {
+          this.setState({
+            lat: position.coords.latitude
+          })
+        },
+        err => {
+          this.setState({
+            errorMessage: err.message
+          })
+        }
+      );
   }
 
   render() {
