@@ -19,6 +19,12 @@ const App = () => {
   return <div className="border red">{content}</div>
 }
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js');
+  });
+}
+
 ReactDOM.render(
   <App />,
   document.querySelector('#root')
